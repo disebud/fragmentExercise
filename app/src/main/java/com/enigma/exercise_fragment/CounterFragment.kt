@@ -51,3 +51,4 @@ class CounterFragment : Fragment(), View.OnClickListener {
         }
     }
 }
+

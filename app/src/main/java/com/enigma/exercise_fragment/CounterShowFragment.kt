@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.enigma.exercise_fragment.view_model.CounterViewModel
 import kotlinx.android.synthetic.main.fragment_counter_show.*
 
@@ -29,12 +30,28 @@ class CounterShowFragment(): Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       counterTextView.text = counterViewModel.counter.toString()
+
+        counterViewModel.counter.observe(viewLifecycleOwner, Observer { setCounterToTextView(it) })
     }
-//
+
+    fun setCounterToTextView(counter:Int){
+        println("TERPANGGIL KARENA DATA BERUBAH $counter")
+        counterTextView.text = counter.toString()
+    }
+
+
+}
+
+    // view model
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//       counterTextView.text = counterViewModel.counter.toString()
+//    }
+
+// lawas
 //    fun notifyCounterChange(counter: Int){
 //        counterTextView.text = counter.toString()
 //    }
 
 
-}
+
