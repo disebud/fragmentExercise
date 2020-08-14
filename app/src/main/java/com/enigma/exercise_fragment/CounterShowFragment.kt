@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import com.enigma.exercise_fragment.view_model.CounterViewModel
 import kotlinx.android.synthetic.main.fragment_counter_show.*
 
 
 class CounterShowFragment(): Fragment() {
 
-    var counter: Int = 0
+//    var counter: Int = 0
+    val counterViewModel by activityViewModels<CounterViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +29,12 @@ class CounterShowFragment(): Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        notifyCounterChange(counter)
+       counterTextView.text = counterViewModel.counter.toString()
     }
-
-    fun notifyCounterChange(counter: Int){
-        counterTextView.text = counter.toString()
-    }
+//
+//    fun notifyCounterChange(counter: Int){
+//        counterTextView.text = counter.toString()
+//    }
 
 
 }

@@ -7,8 +7,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), CounterHandler {
-
+class MainActivity : AppCompatActivity(){
+//    class MainActivity : AppCompatActivity(), CounterHandler {
     lateinit var counterFragment: CounterFragment
     lateinit var counterShowFragment: CounterShowFragment
 
@@ -22,15 +22,15 @@ class MainActivity : AppCompatActivity(), CounterHandler {
         println("MAIN_ACTIVITY this = $this")
     }
 
-    override fun notifyCounterIncrease(){
-        counter+=1
-        counterShowFragment.notifyCounterChange(counter)
-    }
-
-    override fun notifyCounterDecrease(){
-        counter-=1
-        counterShowFragment.notifyCounterChange(counter)
-    }
+//    override fun notifyCounterIncrease(){
+//        counter+=1
+//        counterShowFragment.notifyCounterChange(counter)
+//    }
+//
+//    override fun notifyCounterDecrease(){
+//        counter-=1
+//        counterShowFragment.notifyCounterChange(counter)
+//    }
 
     fun toSecondActivity(view: View) {
         startActivity(Intent(this, SecondActivity::class.java))

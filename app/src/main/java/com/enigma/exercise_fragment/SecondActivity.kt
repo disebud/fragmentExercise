@@ -6,7 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_second.*
 
-class SecondActivity : AppCompatActivity() , View.OnClickListener, CounterHandler{
+class SecondActivity : AppCompatActivity() , View.OnClickListener{
 
     lateinit var counterFragment: CounterFragment
     lateinit var counterShowFragment: CounterShowFragment
@@ -25,25 +25,27 @@ class SecondActivity : AppCompatActivity() , View.OnClickListener, CounterHandle
 
     }
 
-    override fun notifyCounterIncrease() {
-       counter+=1
-    }
-
-    override fun notifyCounterDecrease() {
-        counter-=1
-    }
+//    override fun notifyCounterIncrease() {
+//       counter+=1
+//    }
+//
+//    override fun notifyCounterDecrease() {
+//        counter-=1
+//    }
 
     override fun onClick(v: View?) {
         when(v){
             toCounterFragmentButton -> {switchFragment(counterFragment)}
             toCounterShowFragmentButton -> {
-                counterShowFragment.counter = counter
+//                counterShowFragment.counter = counter
                 switchFragment(counterShowFragment)
             }
         }
     }
 
     fun switchFragment(fragment: Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragmentContainer, fragment).commit()
     }
 }
